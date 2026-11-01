@@ -25,9 +25,11 @@ struct BusinessToolsView: View {
             VStack(alignment: .leading, spacing: 20) {
                 policyDesigner
                 signageIdeas
+                SponsoredCard(.business)
                 trainingCard
             }
         }
+        .loadsSponsoredCard(.business)
     }
 
     private var policyDesigner: some View {

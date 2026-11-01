@@ -195,8 +195,10 @@ struct RoundingJournalView: View {
             VStack(spacing: 16) {
                 summaryCard
                 logListCard
+                SponsoredCard(.journal)
             }
         }
+        .loadsSponsoredCard(.journal)
         .toolbarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {

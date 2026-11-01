@@ -32,10 +32,12 @@ struct EconomicsView: View {
                 mintDataCard
                 roundingFairnessCard
                 reasonsToKeepCard
+                SponsoredCard(.economics)
                 whoWinsCard
                 pollCard
             }
         }
+        .loadsSponsoredCard(.economics)
     }
 
     // MARK: - Mint data

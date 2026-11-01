@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		93AD0C052F10000000A91872 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 93AD0C032F10000000A91872 /* GoogleMobileAds */; };
+		93AD0C062F10000000A91872 /* GoogleUserMessagingPlatform in Frameworks */ = {isa = PBXBuildFile; productRef = 93AD0C042F10000000A91872 /* GoogleUserMessagingPlatform */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		933A8FA22EDFA9FA00A91872 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -33,6 +38,7 @@
 		933A93492EE0833800A91872 /* Exceptions for "Pennywise" folder in "Pennywise" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Info.plist,
 				"RoundingRule+Math.swift",
 			);
 			target = 933A8F932EDFA9F900A91872 /* Pennywise */;
@@ -76,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93AD0C052F10000000A91872 /* GoogleMobileAds in Frameworks */,
+				93AD0C062F10000000A91872 /* GoogleUserMessagingPlatform in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +144,8 @@
 			);
 			name = Pennywise;
 			packageProductDependencies = (
+				93AD0C032F10000000A91872 /* GoogleMobileAds */,
+				93AD0C042F10000000A91872 /* GoogleUserMessagingPlatform */,
 			);
 			productName = Pennywise;
 			productReference = 933A8F942EDFA9F900A91872 /* Pennywise.app */;
@@ -219,6 +229,10 @@
 			);
 			mainGroup = 933A8F8B2EDFA9F900A91872;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				93AD0C012F10000000A91872 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				93AD0C022F10000000A91872 /* XCRemoteSwiftPackageReference "swift-package-manager-google-user-messaging-platform" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 933A8F952EDFA9F900A91872 /* Products */;
 			projectDirPath = "";
@@ -422,8 +436,11 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
+				GAD_APPLICATION_IDENTIFIER = "ca-app-pub-3940256099942544~1458002511";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pennywise/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Penny Impact";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Penny Impact is free because of a small sponsored card on some screens. Allowing tracking lets those ads be more relevant to you; the app works the same either way.";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -440,6 +457,12 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 2026.2.4;
+				PENNY_NATIVE_AD_UNIT_ID = "ca-app-pub-3940256099942544/3986624511";
+				PENNY_NATIVE_AD_UNIT_ID_ABOUT = "";
+				PENNY_NATIVE_AD_UNIT_ID_BUSINESS = "";
+				PENNY_NATIVE_AD_UNIT_ID_ECONOMICS = "";
+				PENNY_NATIVE_AD_UNIT_ID_IMPACT = "";
+				PENNY_NATIVE_AD_UNIT_ID_JOURNAL = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Me.Pennywise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -470,8 +493,11 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
+				GAD_APPLICATION_IDENTIFIER = "ca-app-pub-3940256099942544~1458002511";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pennywise/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Penny Impact";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Penny Impact is free because of a small sponsored card on some screens. Allowing tracking lets those ads be more relevant to you; the app works the same either way.";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -488,6 +514,12 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 2026.2.4;
+				PENNY_NATIVE_AD_UNIT_ID = "ca-app-pub-3940256099942544/3986624511";
+				PENNY_NATIVE_AD_UNIT_ID_ABOUT = "";
+				PENNY_NATIVE_AD_UNIT_ID_BUSINESS = "";
+				PENNY_NATIVE_AD_UNIT_ID_ECONOMICS = "";
+				PENNY_NATIVE_AD_UNIT_ID_IMPACT = "";
+				PENNY_NATIVE_AD_UNIT_ID_JOURNAL = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Me.Pennywise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -647,6 +679,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		93AD0C012F10000000A91872 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.11.0;
+			};
+		};
+		93AD0C022F10000000A91872 /* XCRemoteSwiftPackageReference "swift-package-manager-google-user-messaging-platform" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		93AD0C032F10000000A91872 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93AD0C012F10000000A91872 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+		93AD0C042F10000000A91872 /* GoogleUserMessagingPlatform */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93AD0C022F10000000A91872 /* XCRemoteSwiftPackageReference "swift-package-manager-google-user-messaging-platform" */;
+			productName = GoogleUserMessagingPlatform;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 933A8F8C2EDFA9F900A91872 /* Project object */;
 }

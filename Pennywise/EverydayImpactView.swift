@@ -100,9 +100,11 @@ struct EverydayImpactView: View {
             VStack(spacing: 16) {
                 scenarioCard
                 effectCard
+                SponsoredCard(.everydayImpact)
                 exploreCard
             }
         }
+        .loadsSponsoredCard(.everydayImpact)
         .toolbarTitleDisplayMode(.inline)
     }
 

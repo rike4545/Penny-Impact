@@ -8,6 +8,8 @@ import SwiftUI
 @MainActor
 struct AboutView: View {
     @Environment(\.colorScheme) private var scheme
+    @ObservedObject private var consent = AdsConsentManager.shared
+    @AppStorage(AdsConfiguration.classroomModeKey) private var classroomMode = false
 
     private var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
@@ -25,12 +27,14 @@ struct AboutView: View {
             VStack(alignment: .leading, spacing: 20) {
                 overviewCard
                 whatYouCanDoCard
+                SponsoredCard(.about)
                 forTeachersCard
                 dataSourcesCard
                 privacyCard
                 versionCard
             }
         }
+        .loadsSponsoredCard(.about)
     }
 
     // MARK: - Cards
@@ -71,7 +75,7 @@ struct AboutView: View {
                 BulletPoint(text: "Pair the economics tab with short writing prompts or mini-debates.")
                 BulletPoint(text: "Invite students to explain which rounding rule feels fairest and why.")
 
-                Text("There are no accounts, logins, or paywalls, so you can move straight into teaching.")
+                Text("There are no accounts, logins, or paywalls, so you can move straight into teaching. Turn on Classroom mode (below) to hide sponsored cards.")
                     .font(.footnote)
                     .foregroundColor(PennyTheme.secondaryText(scheme))
                     .padding(.top, 6)
@@ -99,16 +103,47 @@ struct AboutView: View {
     }
 
     private var privacyCard: some View {
-        PennyCard(title: "Privacy and offline use") {
+        PennyCard(title: "Privacy, ads, and offline use") {
             VStack(alignment: .leading, spacing: 8) {
                 BulletPoint(text: "Core tools work offline after installation, which fits classrooms with limited or filtered internet access.")
-                BulletPoint(text: "Local votes on the penny are stored only on this device and are not synced to a server.")
+                BulletPoint(text: "Your rounding journal and local votes are stored only on this device and are not synced to a server.")
                 BulletPoint(text: "The app does not require personal accounts or student logins.")
+                BulletPoint(text: "A few screens show one clearly labeled “Sponsored” card from Google AdMob. Ads are limited to general-audience content and never appear on the Learn & Teach screens.")
+                BulletPoint(text: "Ads are only requested after the privacy choices required where you live, and personalized ads are only used if you allow tracking.")
 
-                Text("If you are responsible for student privacy, you can treat Pennywise like a digital poster: it displays information and lets you run examples without collecting personal data.")
-                    .font(.footnote)
-                    .foregroundColor(PennyTheme.secondaryText(scheme))
-                    .padding(.top, 6)
+                Toggle(isOn: $classroomMode) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Classroom mode")
+                            .font(.subheadline.bold())
+                        Text("Hides every sponsored card on this device — ideal for projectors and student tablets.")
+                            .font(.footnote)
+                            .foregroundColor(PennyTheme.secondaryText(scheme))
+                    }
+                }
+                .tint(PennyTheme.accentCopper)
+                .padding(.top, 6)
+
+                if consent.isPrivacyOptionsRequired {
+                    Button {
+                        Task { await consent.presentPrivacyOptions() }
+                    } label: {
+                        Label("Privacy choices", systemImage: "hand.raised")
+                            .font(.subheadline.weight(.semibold))
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(PennyTheme.accentCopper)
+                }
+
+                Button {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url)
+                    }
+                } label: {
+                    Label("Tracking permission in Settings", systemImage: "gearshape")
+                        .font(.footnote.weight(.semibold))
+                }
+                .buttonStyle(.borderless)
+                .tint(PennyTheme.accentCopper)
             }
         }
     }
