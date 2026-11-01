@@ -12,6 +12,7 @@
 //
 
 import SwiftUI
+import Combine
 import AppTrackingTransparency
 import GoogleMobileAds
 import UserMessagingPlatform

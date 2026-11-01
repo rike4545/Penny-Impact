@@ -12,6 +12,7 @@
 //
 
 import SwiftUI
+import Combine
 import GoogleMobileAds
 import os
 

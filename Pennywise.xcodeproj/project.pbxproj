@@ -45,22 +45,11 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		933A934A2EE0833800A91872 /* Exceptions for "Pennywise" folder in "Copy Bundle Resources" phase from "Pennywise" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 933A8F922EDFA9F900A91872 /* Resources */;
-			membershipExceptions = (
-				"RoundingRule+Math.swift",
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		933A8F962EDFA9F900A91872 /* Pennywise */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				933A93492EE0833800A91872 /* Exceptions for "Pennywise" folder in "Pennywise" target */,
-				933A934A2EE0833800A91872 /* Exceptions for "Pennywise" folder in "Copy Bundle Resources" phase from "Pennywise" target */,
 			);
 			path = Pennywise;
 			sourceTree = "<group>";
