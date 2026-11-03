@@ -13,6 +13,7 @@ import GoogleMobileAds
 final class PennyNativeAdModel: NSObject, ObservableObject, NativeAdLoaderDelegate, NativeAdDelegate {
     @Published private(set) var ad: NativeAd?
     @Published private(set) var loadError: String?
+    @Published private(set) var isLoading = false
 
     private var loader: AdLoader?
 
@@ -26,12 +27,14 @@ final class PennyNativeAdModel: NSObject, ObservableObject, NativeAdLoaderDelega
     }
 
     func load() {
-        guard loader == nil, ad == nil else { return }
+        guard loader == nil, ad == nil, !isLoading else { return }
+        isLoading = true
+        loadError = nil
 
         let rootViewController = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
-            .flatMap(\.windows)
-            .first(where: \.isKeyWindow)?
+            .flatMap(\\.windows)
+            .first(where: \\.isKeyWindow)?
             .rootViewController
 
         let requestLoader = AdLoader(
@@ -46,12 +49,14 @@ final class PennyNativeAdModel: NSObject, ObservableObject, NativeAdLoaderDelega
     }
 
     func adLoader(_ adLoader: AdLoader, didReceive nativeAd: NativeAd) {
+        isLoading = false
         ad = nativeAd
         loadError = nil
         nativeAd.delegate = self
     }
 
     func adLoader(_ adLoader: AdLoader, didFailToReceiveAdWithError error: Error) {
+        isLoading = false
         loadError = error.localizedDescription
         loader = nil
         NSLog("Penny Impact: native ad request failed: %@", error.localizedDescription)
@@ -65,16 +70,30 @@ struct PennyNativeAdCard: View {
 
     var body: some View {
         Group {
-            if consent.canRequestAds, let ad = model.ad {
+            if consent.canRequestAds {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Advertisement")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(.secondary)
 
-                    PennyNativeAdView(ad: ad)
-                        .frame(minHeight: 250)
-                        .padding(12)
-                        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+                    if let ad = model.ad {
+                        PennyNativeAdView(ad: ad)
+                            .frame(minHeight: 250)
+                            .padding(12)
+                            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+                    } else if model.loadError != nil {
+                        Button {
+                            model.load()
+                        } label: {
+                            Label("Ad unavailable — try again", systemImage: "arrow.clockwise")
+                                .font(.footnote.weight(.medium))
+                                .frame(maxWidth: .infinity, minHeight: 72)
+                        }
+                        .buttonStyle(.bordered)
+                    } else {
+                        ProgressView("Loading sponsored content…")
+                            .frame(maxWidth: .infinity, minHeight: 72)
+                    }
                 }
                 .accessibilityElement(children: .contain)
             }
