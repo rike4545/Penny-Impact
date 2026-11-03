@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = A20000000000000000000001 /* GoogleMobileAds */; };
+		A10000000000000000000002 /* GoogleUserMessagingPlatform in Frameworks */ = {isa = PBXBuildFile; productRef = A20000000000000000000002 /* GoogleUserMessagingPlatform */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		933A8FA22EDFA9FA00A91872 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -76,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10000000000000000000001 /* GoogleMobileAds in Frameworks */,
+				A10000000000000000000002 /* GoogleUserMessagingPlatform in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +143,8 @@
 			);
 			name = Pennywise;
 			packageProductDependencies = (
+				A20000000000000000000001 /* GoogleMobileAds */,
+				A20000000000000000000002 /* GoogleUserMessagingPlatform */,
 			);
 			productName = Pennywise;
 			productReference = 933A8F942EDFA9F900A91872 /* Pennywise.app */;
@@ -220,6 +229,10 @@
 			mainGroup = 933A8F8B2EDFA9F900A91872;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
+			packageReferences = (
+				A30000000000000000000001 /* GoogleMobileAds */,
+				A30000000000000000000002 /* GoogleUserMessagingPlatform */,
+			);
 			productRefGroup = 933A8F952EDFA9F900A91872 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -425,6 +438,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Penny Impact";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_GADApplicationIdentifier = "ca-app-pub-9917450718827221~5782515458";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -473,6 +487,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Penny Impact";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_GADApplicationIdentifier = "ca-app-pub-9917450718827221~5782515458";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -608,6 +623,33 @@
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
+
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A30000000000000000000001 /* GoogleMobileAds */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = { kind = upToNextMajorVersion; minimumVersion = 13.12.0; };
+		};
+		A30000000000000000000002 /* GoogleUserMessagingPlatform */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git";
+			requirement = { kind = upToNextMajorVersion; minimumVersion = 3.1.0; };
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A20000000000000000000001 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A30000000000000000000001 /* GoogleMobileAds */;
+			productName = GoogleMobileAds;
+		};
+		A20000000000000000000002 /* GoogleUserMessagingPlatform */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A30000000000000000000002 /* GoogleUserMessagingPlatform */;
+			productName = GoogleUserMessagingPlatform;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCConfigurationList section */
 		933A8F8F2EDFA9F900A91872 /* Build configuration list for PBXProject "Pennywise" */ = {
