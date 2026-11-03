@@ -10,7 +10,7 @@ import UIKit
 import GoogleMobileAds
 
 @MainActor
-final class PennyNativeAdModel: NSObject, ObservableObject, NativeAdLoaderDelegate {
+final class PennyNativeAdModel: NSObject, ObservableObject, NativeAdLoaderDelegate, NativeAdDelegate {
     @Published private(set) var ad: NativeAd?
     @Published private(set) var loadError: String?
 
