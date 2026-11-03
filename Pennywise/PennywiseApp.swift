@@ -4,7 +4,6 @@ import SwiftUI
 
 @main
 struct PennywiseApp: App {
-
     init() {
         PennyTheme.configureAppearance()
     }
@@ -12,6 +11,9 @@ struct PennywiseApp: App {
     var body: some Scene {
         WindowGroup {
             RootTabView()
+                .task {
+                    await AdConsentManager.shared.updateConsent()
+                }
         }
     }
 }

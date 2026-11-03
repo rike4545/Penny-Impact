@@ -11,6 +11,7 @@ import StoreKit
 @MainActor
 struct SupportView: View {
     @Environment(\.colorScheme) private var scheme
+    @ObservedObject private var consentManager = AdConsentManager.shared
 
     var body: some View {
         PennyScreenBackground(
@@ -21,6 +22,8 @@ struct SupportView: View {
                 whySupportCard
                 simpleActionsCard
                 classroomSupportCard
+                privacyAndAdsCard
+                PennyNativeAdCard()
             }
         }
     }
@@ -78,6 +81,39 @@ struct SupportView: View {
                     .font(.footnote)
                     .foregroundColor(PennyTheme.secondaryText(scheme))
                     .padding(.top, 6)
+            }
+        }
+    }
+
+
+    private var privacyAndAdsCard: some View {
+        PennyCard(title: "Advertising & privacy") {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("A clearly labelled Google advertisement may appear on this Support screen. Ads are not placed in the rounding simulator, learning activities, or business tools.")
+                    .font(.footnote)
+                    .foregroundColor(PennyTheme.secondaryText(scheme))
+
+                Text("Google's consent form is refreshed when the app launches. Ad requests are made only when the consent SDK reports that they are allowed.")
+                    .font(.footnote)
+                    .foregroundColor(PennyTheme.secondaryText(scheme))
+
+                if consentManager.privacyOptionsRequired {
+                    Button {
+                        Task { await consentManager.presentPrivacyOptions() }
+                    } label: {
+                        Label("Privacy and consent settings", systemImage: "hand.raised")
+                            .font(.subheadline.weight(.semibold))
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(PennyTheme.accentCopper)
+                }
+
+                if let error = consentManager.consentError {
+                    Text("Consent status could not be refreshed: \(error)")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
     }

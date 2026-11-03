@@ -101,11 +101,11 @@ struct AboutView: View {
     private var privacyCard: some View {
         PennyCard(title: "Privacy and offline use") {
             VStack(alignment: .leading, spacing: 8) {
-                BulletPoint(text: "Core tools work offline after installation, which fits classrooms with limited or filtered internet access.")
-                BulletPoint(text: "Local votes on the penny are stored only on this device and are not synced to a server.")
-                BulletPoint(text: "The app does not require personal accounts or student logins.")
+                BulletPoint(text: "The rounding, learning, and business tools do not require accounts or student logins.")
+                BulletPoint(text: "Local votes on the penny are stored only on this device and are not synced to a Pennywise account.")
+                BulletPoint(text: "A clearly labelled Google native advertisement may appear on the Support screen only.")
 
-                Text("If you are responsible for student privacy, you can treat Pennywise like a digital poster: it displays information and lets you run examples without collecting personal data.")
+                Text("The advertising SDK may process device, diagnostic, and ad-interaction information. Google's consent tools manage consent where required, and ad requests wait until the SDK permits them. Review the app's published privacy policy and App Store privacy disclosures for the complete details.")
                     .font(.footnote)
                     .foregroundColor(PennyTheme.secondaryText(scheme))
                     .padding(.top, 6)
