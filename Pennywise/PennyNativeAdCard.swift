@@ -33,8 +33,8 @@ final class PennyNativeAdModel: NSObject, ObservableObject, NativeAdLoaderDelega
 
         let rootViewController = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
-            .flatMap(\\.windows)
-            .first(where: \\.isKeyWindow)?
+            .flatMap(\.windows)
+            .first(where: \.isKeyWindow)?
             .rootViewController
 
         let requestLoader = AdLoader(
